@@ -1,0 +1,27 @@
+# Eula: https://opensource.org/license/mit
+eula: false
+
+# Info for server Owners
+# HelixCore is used as a placeholder. Please change it at your own discretion!
+
+
+messages:
+  # Color codes: https://minecraft.wiki/w/Formatting_codes#Color_codes
+  welcome-message: "§aWelcome to the HelixCore!"
+  quit-message: "§cGoodbye!"
+  first-join-message: "§aWelcome to the HelixCore! This is your first time joining the HelixCore!"
+
+  player-message-style: "<>" # "[PlayerName]" = "[]" or "<PlayerName>" = "<>"
+  player-message-color: "§a" # Color codes: https://minecraft.wiki/w/Formatting_codes#Color_codes
+  player-message-content-color: "§f" # Color codes: https://minecraft.wiki/w/Formatting_codes#Color_codes
+
+features:
+  tpa:
+    tpa-enabled: true
+    tpa-cooldown: 10
+
+
+# Plugin Info DO NOT TOUCH !!!!
+plugin-info:
+  version: "0.0.1"
+  debug: false

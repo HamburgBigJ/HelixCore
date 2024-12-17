@@ -1,0 +1,32 @@
+name: HelixCore
+version: '0.1'
+main: cho.info.helixCore.HelixCore
+api-version: '1.21'
+prefix: Helix
+authors: [ HamburgBigJ ]
+
+commands:
+  helix:
+    description: Main command for HelixCore.
+    usage: /helix
+    aliases: [ hc ]
+
+  tpa:
+    description: Send a teleport request to another player.
+    usage: /tpa <player>
+
+  tpaccept:
+    description: Accept a teleport request.
+    usage: /tpaccept
+
+  tempban:
+    description: Bans a player with a custom reason and duration.
+    usage: /helixban <player> <duration> <reason>
+    permission: helixcore.tempban
+    permission-message: You do not have permission to use this command.
+
+  helixban:
+    description: Bans a player from the server.
+    usage: /helixban <player>
+    permission: helixcore.ban
+    permission-message: You do not have permission to use this command.
