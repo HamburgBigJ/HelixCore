@@ -1,5 +1,6 @@
-package cho.info.helixCore.core.commands.ban;
+package cho.info.helixCore.core.esseinsials.commands.ban;
 
+import cho.info.helixCore.util.DataManager;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -7,6 +8,11 @@ import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
 public class HelixBan implements CommandExecutor {
+
+    public DataManager dataManager;
+    public HelixBan(DataManager dataManager) {
+        this.dataManager = dataManager;
+    }
     @Override
     public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
 

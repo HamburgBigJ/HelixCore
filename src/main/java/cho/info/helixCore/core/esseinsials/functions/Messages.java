@@ -1,4 +1,4 @@
-package cho.info.helixCore.core.functions;
+package cho.info.helixCore.core.esseinsials.functions;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

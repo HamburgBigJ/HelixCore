@@ -1,4 +1,4 @@
-package cho.info.helixCore.core.commands;
+package cho.info.helixCore.core.esseinsials.commands;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;

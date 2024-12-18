@@ -1,13 +1,14 @@
 package cho.info.helixCore;
 
 import cho.info.helixCore.config.ConfigUpdate;
-import cho.info.helixCore.core.commands.ban.HelixBan;
-import cho.info.helixCore.core.commands.HelixCommand;
-import cho.info.helixCore.core.commands.ban.HelixTempBan;
-import cho.info.helixCore.core.commands.tpa.HelixTpa;
-import cho.info.helixCore.core.commands.tpa.HelixTpaAccept;
-import cho.info.helixCore.core.functions.Messages;
-import cho.info.helixCore.core.functions.PlayerMessages;
+import cho.info.helixCore.core.esseinsials.commands.ban.HelixBan;
+import cho.info.helixCore.core.esseinsials.commands.HelixCommand;
+import cho.info.helixCore.core.esseinsials.commands.ban.HelixTempBan;
+import cho.info.helixCore.core.esseinsials.commands.tpa.HelixTpa;
+import cho.info.helixCore.core.esseinsials.commands.tpa.HelixTpaAccept;
+import cho.info.helixCore.core.esseinsials.functions.FirstJoin;
+import cho.info.helixCore.core.esseinsials.functions.Messages;
+import cho.info.helixCore.core.esseinsials.functions.PlayerMessages;
 import cho.info.helixCore.util.DataManager;
 import cho.info.helixCore.config.HelixEula;
 import org.bukkit.plugin.Plugin;
@@ -66,13 +67,14 @@ public class Helix {
 
         pluginManager.registerEvents(new Messages(plugin), plugin);
         pluginManager.registerEvents(new PlayerMessages(plugin), plugin);
+        pluginManager.registerEvents(new FirstJoin(dataManager), plugin);
 
         // Register commands
         javaPlugin.getCommand("helix").setExecutor(new HelixCommand());
         javaPlugin.getCommand("tpa").setExecutor(new HelixTpa(dataManager));
         javaPlugin.getCommand("tpaccept").setExecutor(new HelixTpaAccept(dataManager));
-        javaPlugin.getCommand("tempban").setExecutor(new HelixTempBan());
-        javaPlugin.getCommand("helixban").setExecutor(new HelixBan());
+        javaPlugin.getCommand("tempban").setExecutor(new HelixTempBan(dataManager));
+        javaPlugin.getCommand("helixban").setExecutor(new HelixBan(dataManager));
 
     }
 

@@ -1,4 +1,4 @@
-package cho.info.helixCore.core.commands.tpa;
+package cho.info.helixCore.core.esseinsials.commands.tpa;
 
 import cho.info.helixCore.util.DataManager;
 import org.bukkit.Bukkit;

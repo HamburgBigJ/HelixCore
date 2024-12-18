@@ -14,6 +14,7 @@ public class DataManager {
 
     private final File playerDataFolder;
     private final File publicVarsFile;
+    private final File factionVarsFile;
     private final Map<UUID, FileConfiguration> configCache = new HashMap<>();
     private FileConfiguration publicVarsConfig;
 
@@ -30,6 +31,9 @@ public class DataManager {
             serverVarsFolder.mkdirs();
         }
         publicVarsFile = new File(serverVarsFolder, "PublicVars.yml");
+
+        // Factions
+        factionVarsFile = new File(serverVarsFolder, "FactionVars.yml");
 
         // Load public variables
         loadPublicVars();
@@ -79,7 +83,7 @@ public class DataManager {
     }
 
     // Adds a new variable with a default value
-    public void addPublicValue(Player player, String variableName, Object defaultValue) {
+    public void addPlayerValue(Player player, String variableName, Object defaultValue) {
         FileConfiguration config = getPlayerConfig(player.getUniqueId());
 
         if (!config.contains(variableName)) {
@@ -126,6 +130,10 @@ public class DataManager {
         }
     }
 
+    public void containsPublicVar(String path) {
+        publicVarsConfig.contains(path);
+    }
+
     // Adds a new public variable with a default value
     public void addPublicVar(String variableName, Object defaultValue) {
         if (!publicVarsConfig.contains(variableName)) {
@@ -141,4 +149,51 @@ public class DataManager {
             savePublicVars();
         }
     }
+
+    public void loadFactionVars() {
+        if (!factionVarsFile.exists()) {
+            try {
+                factionVarsFile.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        publicVarsConfig = YamlConfiguration.loadConfiguration(factionVarsFile);
+    }
+
+    public Object getFactionVar(String path) {
+        return publicVarsConfig.get(path);
+    }
+
+    public void setFactionVar(String path, Object value) {
+        publicVarsConfig.set(path, value);
+        saveFactionVars();
+    }
+
+    private void saveFactionVars() {
+        try {
+            publicVarsConfig.save(factionVarsFile);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void addFactionVar(String variableName, Object defaultValue) {
+        if (!publicVarsConfig.contains(variableName)) {
+            publicVarsConfig.set(variableName, defaultValue);
+            saveFactionVars();
+        }
+    }
+
+    public void removeFactionVar(String path) {
+        if (publicVarsConfig.contains(path)) {
+            publicVarsConfig.set(path, null);
+            saveFactionVars();
+        }
+    }
+
+    public boolean containsFactionVar(String path) {
+        return publicVarsConfig.contains(path);
+    }
+
 }
