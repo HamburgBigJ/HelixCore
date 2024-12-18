@@ -16,6 +16,10 @@ public class HelixEula {
         if (!plugin.getConfig().getBoolean("eula")) {
             PluginManager pluginManager = plugin.getServer().getPluginManager();
 
+            plugin.getLogger().warning("You must accept the EULA to use this plugin.");
+            plugin.getLogger().warning("Please set 'eula' to 'true' in the config.yml file.");
+
+
             pluginManager.disablePlugin(plugin);
         }
     }

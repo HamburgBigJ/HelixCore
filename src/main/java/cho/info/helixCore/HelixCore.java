@@ -8,6 +8,7 @@ public final class HelixCore extends JavaPlugin {
     public Helix helix;
     @Override
     public void onEnable() {
+        saveDefaultConfig();
         this.helix = new Helix(this, this);
         helix.helixCoreInit();
         helix.enable();

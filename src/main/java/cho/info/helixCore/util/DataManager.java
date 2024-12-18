@@ -37,6 +37,7 @@ public class DataManager {
 
         // Load public variables
         loadPublicVars();
+        loadFactionVars();
     }
 
     // Retrieves the player's config file

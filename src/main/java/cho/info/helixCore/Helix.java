@@ -9,6 +9,7 @@ import cho.info.helixCore.core.esseinsials.commands.tpa.HelixTpaAccept;
 import cho.info.helixCore.core.esseinsials.functions.FirstJoin;
 import cho.info.helixCore.core.esseinsials.functions.Messages;
 import cho.info.helixCore.core.esseinsials.functions.PlayerMessages;
+import cho.info.helixCore.core.factions.HelixFactions;
 import cho.info.helixCore.util.DataManager;
 import cho.info.helixCore.config.HelixEula;
 import org.bukkit.plugin.Plugin;
@@ -23,7 +24,6 @@ public class Helix {
 
     public Plugin plugin;
     public JavaPlugin javaPlugin;
-    public Logger logger = plugin.getLogger();
 
 
     /**
@@ -40,7 +40,7 @@ public class Helix {
      * Initialize the HelixCore
      */
     public void helixCoreInit() {
-        logger.info("HelixCore initialized");
+        plugin.getLogger().info("HelixCore initialized");
         this.dataManager = new DataManager(plugin.getDataFolder());
 
     }
@@ -49,7 +49,7 @@ public class Helix {
      * Enable the plugin
      */
     public void enable() {
-        logger.info("Helix enabled");
+        plugin.getLogger().info("Helix enabled");
 
         // Eula
         HelixEula helixEula = new HelixEula(plugin);
@@ -58,6 +58,10 @@ public class Helix {
         // Config
         ConfigUpdate configUpdate = new ConfigUpdate(plugin, version);
         configUpdate.updateConfig();
+
+        // Factions
+        HelixFactions helixFactions = new HelixFactions(javaPlugin, plugin);
+        helixFactions.enable();
 
         // DataManager
         dataManager.setPublicVar("version", version);
@@ -82,8 +86,7 @@ public class Helix {
      * Disable the plugin
      */
     public void disable() {
-        logger.info("Helix disabled");
-
+        plugin.getLogger().info("Helix disabled");
 
 
     }
